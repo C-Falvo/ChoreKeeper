@@ -1,11 +1,14 @@
 package com.example.gustavojimenez.chorekeeper;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -26,6 +29,7 @@ import static java.lang.Boolean.TRUE;
 public class AllChores extends AppCompatActivity {
 
     String housecode = null;
+    Button allChores, myChores, rewards,createchore;
 
     private static final String TAG = "AllChores:";
 
@@ -39,11 +43,56 @@ public class AllChores extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_chores);
 
-
+        allChores = findViewById(R.id.all_chores2);
+        myChores = findViewById(R.id.my_chores2);
+        rewards = findViewById(R.id.rewards2);
+        createchore = findViewById(R.id.createChore2);
 
         listview = (ListView)findViewById(R.id.allChoresListView);
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,list);
         listview.setAdapter(adapter);
+
+        rewards.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(AllChores.this, Rewards.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        myChores.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(AllChores.this, MyChores.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        allChores.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(AllChores.this, AllChores.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        createchore.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(AllChores.this, CreateChore.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
 
 
 
@@ -133,6 +182,7 @@ public class AllChores extends AppCompatActivity {
 
             }
         };
+
 
 
 
